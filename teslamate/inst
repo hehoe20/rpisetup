@@ -1,0 +1,4 @@
+#!/bin/sh
+# docker-compose -p "teslamate" up -d
+docker compose pull
+docker compose -p "teslamate" up -d
