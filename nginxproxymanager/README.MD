@@ -1,1 +1,1 @@
-https://nginxproxymanager.com/
+https://nginxproxymanager.com/setup/
