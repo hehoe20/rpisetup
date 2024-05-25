@@ -1,0 +1,24 @@
+services:
+  wordpress:
+    container_name: wordpress
+    image: wordpress:latest
+    links:
+     - mariadb:mysql
+    environment:
+     - WORDPRESS_DB_PASSWORD=test
+     - WORDPRESS_DB_USER=root
+     - WORDPRESS_DB_HOST=mardiadb-wordpress
+    ports:
+     - "888:80"
+    volumes:
+     - ./html:/var/www/html
+    restart: unless-stopped
+  mariadb:
+    container_name: mardiadb-wordpress
+    image: mariadb:latest
+    environment:
+     - MYSQL_ROOT_PASSWORD=test
+     - MYSQL_DATABASE=wordpress
+    volumes:
+     - ./database:/var/lib/mysql
+    restart: unless-stopped
