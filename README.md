@@ -27,6 +27,7 @@ sudo echo "deb [signed-by=/usr/share/keyrings/webmin.gpg] http://download.webmin
 sudo apt update
 sudo apt install webmin
 ```
+Webmin on port 10000 - install docker module: https://github.com/dave-lang/webmin-docker/releases/download/0.4.2/docker.wbm.gz via Webmin/Webmin configuration/Webmin modules
 ## Portainer Enterprise Edition
 ```bash
 docker stop portainer
