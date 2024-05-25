@@ -45,3 +45,6 @@ docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/d
 ```
 ### Usefull links
 [bash history](https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps)
+
+### Note on paths
+If using stacks and docker compose via portainer relative path data are stored in /data/....
