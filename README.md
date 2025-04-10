@@ -55,3 +55,11 @@ Bind mounts /var/lib/docker/...
 touch exclude.txt
 sudo 7z a -xr@exclude.txt -mmt4 -mx=5 backup-$(date +%Y-%m-%d-%H.%M.%S).7z ./wp_site1.com ./wp_site2.com 
 ```
+
+### watchtower - autoupdates containers, https://containrrr.dev/watchtower/
+```bash
+docker run -d \
+    --name watchtower --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower --cleanup
+```
