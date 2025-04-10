@@ -50,5 +50,8 @@ docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/d
 If using stacks and docker compose via portainer relative path data are stored in /data/....  
 Bind mounts /var/lib/docker/...
 
-### 7zip for backups, can be cron job (create the exclude.txt file containing files, could be *.mp4, to exclude)
+### 7zip for backups, can be cron job (create the exclude.txt file containing files/wildcards to exclude)
+```bash
+touch exclude.txt
 sudo 7z a -xr@exclude.txt -mmt4 -mx=5 backup-$(date +%Y-%m-%d-%H.%M.%S).7z ./wp_site1.com ./wp_site2.com 
+```
