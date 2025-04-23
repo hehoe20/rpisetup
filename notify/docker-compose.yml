@@ -1,0 +1,22 @@
+services:
+    gotify:
+        image: gotify/server
+        ports:
+            - 8010:80
+        environment:
+            GOTIFY_DEFAULTUSER_PASS: 'somepass'
+        volumes:
+            - ./gotify_data:/app/data # to run gotify as a dedicated user:  sudo chown -R 1234:1234 ./gotify_data
+        container_name: gotify
+        restart: unless-stopped
+    signal-cli-rest-api:
+        image: bbernhard/signal-cli-rest-api:latest
+        environment:
+            - MODE=json-rpc #supported modes: json-rpc, native, normal
+            #- AUTO_RECEIVE_SCHEDULE=0 22 * * * #enable this parameter on demand (see description below)
+        ports:
+            - 8020:8080 #map docker port 8020 to host port 8080.
+        volumes:
+            - ./signal-cli-config:/home/.local/share/signal-cli # the folder contains the password and cryptographic keys when a new number is registered
+        restart: unless-stopped
+        container_name: signal
