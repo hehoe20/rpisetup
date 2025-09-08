@@ -1,4 +1,4 @@
-# control USB devices and mounts
+## Control USB devices and symbolic link mounts for known devices
 ```console
 foo@bar:~$ lsusb
 ```
