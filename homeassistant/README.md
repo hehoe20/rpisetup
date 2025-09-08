@@ -23,4 +23,4 @@ ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="0658", ATTRS{idProduct}=="020
 ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="rflink", GROUP="dialout", MODE="0666"
 ACTION=="add", SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d4", SYMLINK+="cc2652", GROUP="dialout", MODE="0666"
 ```
-Then symbolic links will like /dev/zw090 will be created on mount and can be used inside containers.
+Then symbolic links like /dev/zw090 will be created on mount/boot and can be used inside containers (docker-compose.yaml).
