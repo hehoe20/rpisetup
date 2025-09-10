@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: Claper-DB
+    hostname: claper-db
+    security_opt:
+      - no-new-privileges:true
+    user: 1000:100 # id -u
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "claper", "-U", "claperuser"]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+    volumes:
+      - ./db:/var/lib/postgresql/data:rw
+    environment:
+      POSTGRES_DB: claper
+      POSTGRES_USER: claperuser
+      POSTGRES_PASSWORD: claperpass
+    restart: unless-stopped
+  claper:
+    image: ghcr.io/claperco/claper:latest-arm
+    container_name: Claper
+    hostname: claper
+    security_opt:
+      - no-new-privileges:true
+    user: 0:0
+    ports:
+      - 4000:4000
+    volumes:
+      - ./data:/app/uploads:rw
+    environment:
+      DATABASE_URL: postgres://claperuser:claperpass@claper-db:5432/claper
+      SECRET_KEY_BASE: some_key
+      ENDPOINT_HOST: claper.mysite.com
+      #ENDPOINT_HOST: 10.200.20.7
+      #ENDPOINT_PORT: 4000
+      MAX_FILE_SIZE_MB: 250
+      MAIL_TRANSPORT: local
+      PRESENTATION_STORAGE: local
+      ENABLE_ACCOUNT_CREATION: false
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
