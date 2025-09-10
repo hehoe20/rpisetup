@@ -16,6 +16,20 @@ services:
             - mosquitto
             - zwave-js-ui
             - zigbee2mqtt
+    esphome:
+        container_name: esphome
+        image: esphome/esphome
+        #ports:
+        #    - '6052:6052'
+        environment:
+            - ESPHOME_DASHBOARD_USE_PING=true
+        volumes:
+            - ./esphome/config:/config
+            - ./esphome/cache:/cache
+            - /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket # on host: sudo apt install avahi-daemon
+            - /etc/localtime:/etc/localtime:ro
+        restart: unless-stopped
+        network_mode: host
     nodered:
         container_name: nodered
         image: nodered/node-red
