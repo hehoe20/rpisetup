@@ -1,0 +1,8 @@
+services:
+  nginx:
+    restart: unless-stopped
+    image: nginx:latest
+    ports:
+      - 40081:80
+    volumes:
+      - ./html/:/usr/share/nginx/html
