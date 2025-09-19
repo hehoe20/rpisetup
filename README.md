@@ -1,4 +1,6 @@
 # RPI setup
+## List of nice containers
+https://www.bitdoze.com/docker-containers-home-server/
 ## Docker CE
 write Ubuntu image to HD/SD, LAN connected to router, boot:  
 login via ssh (use putty or similar), ubuntu:ubuntu  
