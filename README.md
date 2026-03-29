@@ -1,6 +1,7 @@
 # RPI setup
 ## List of nice containers
 https://www.bitdoze.com/docker-containers-home-server/   
+https://homebox.software/en/   
 https://github.com/roflcoopter/viseron   
 ## Docker CE
 write Ubuntu image ( https://ubuntu.com/download/raspberry-pi ) to HD/SD, LAN connected to router, boot:  
